@@ -23,4 +23,8 @@ public class Airline{
         this.name = name;
     }
 
+    public Flight createFlight(String orig,String dest, int year,int month,int day,String id){
+        return Flights.add(new Flight());
+    }
+
 }

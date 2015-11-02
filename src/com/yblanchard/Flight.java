@@ -8,12 +8,20 @@ import java.util.List;
  * Created by Yann on 01/11/2015.
  */
 public class Flight {
+
+
     private Calendar flightDate;
     private String flightID;
     private List<FlightSection> sections = new ArrayList<FlightSection>();
     private Airline airline;
     private Airport destination;
     private Airport origin;
+
+
+    public Flight(String flightID, Calendar flightDate) {
+        this.flightID = flightID;
+        this.flightDate = flightDate;
+    }
 
     public Airline getAirline(){
         return Airline;

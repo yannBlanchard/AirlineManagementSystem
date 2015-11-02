@@ -28,4 +28,7 @@ public class SystemManager{
         airlines.add(new Airline(n));
     }
 
+    public void createFlight(String n,String orig,String dest, int year,int month,int day,String id){
+        airlines.get();
+    }
 }
