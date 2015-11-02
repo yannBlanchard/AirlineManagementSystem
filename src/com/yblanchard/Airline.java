@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Airline{
     private String name;
-    private List Flights = new ArrayList();
+    private List<Flight> Flights = new ArrayList<Flight>();
 
     public List getAvailableFlights(){
         return Flights;

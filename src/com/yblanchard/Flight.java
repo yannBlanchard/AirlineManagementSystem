@@ -1,6 +1,8 @@
 package com.yblanchard;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Yann on 01/11/2015.
@@ -8,6 +10,10 @@ import java.util.Calendar;
 public class Flight {
     private Calendar flightDate;
     private String flightID;
+    private List<FlightSection> sections = new ArrayList<FlightSection>();
+    private Airline airline;
+    private Airport destination;
+    private Airport origin;
 
     public Airline getAirline(){
         return Airline;
