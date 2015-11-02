@@ -19,6 +19,8 @@ public class Airline{
         return false;
     }
 
-
+    public Airline(String name) {
+        this.name = name;
+    }
 
 }

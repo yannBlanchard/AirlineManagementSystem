@@ -6,5 +6,6 @@ public class ClientAMS {
 	// write your code here
         SystemManager res  = SystemManager.getInstance();
         res.createAirport("CDG");
+        res.createAirline("JET");
     }
 }

@@ -27,8 +27,8 @@ public class SystemManager{
         airports.add(new Airport(n));
     }
 
-    public Airline createAirline(String orig, String dest, Calendar date,String id){
-        return Airline;
+    public Airline createAirline(String n){
+        airlines.add(new Airline(n));
     }
 
 }
