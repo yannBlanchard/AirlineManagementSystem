@@ -6,4 +6,12 @@ package com.yblanchard;
 public class Seat {
     private SeatID seatNum;
     private Boolean isBooked;
+
+    public Boolean getStatus() {
+        return isBooked;
+    }
+
+    public SeatID getSeatNum() {
+        return seatNum;
+    }
 }

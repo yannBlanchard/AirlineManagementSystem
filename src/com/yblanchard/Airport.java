@@ -5,4 +5,8 @@ package com.yblanchard;
  */
 public class Airport {
     private String code;
+
+    public String getName() {
+        return code;
+    }
 }

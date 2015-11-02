@@ -5,4 +5,16 @@ package com.yblanchard;
  */
 public class FlightSection {
     private SeatClass section;
+
+    public SeatClass getSeatClass(){
+        return section;
+    }
+
+    public boolean hasAvailableSeats(){
+        return false;
+    }
+
+    public boolean bookSeat(){
+        return false;
+    }
 }
