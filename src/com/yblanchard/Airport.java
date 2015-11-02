@@ -6,7 +6,14 @@ package com.yblanchard;
 public class Airport {
     private String code;
 
+    public Airport(String code) {
+        this.code = code;
+    }
+
     public String getName() {
         return code;
     }
+
+
+
 }

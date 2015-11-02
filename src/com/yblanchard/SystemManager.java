@@ -1,6 +1,7 @@
 package com.yblanchard;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -9,6 +10,7 @@ import java.util.List;
 public class SystemManager{
     private List<Airline> airlines = new ArrayList<Airline>();
     private List<Airport> airports = new ArrayList<Airport>();
+
 
     private static SystemManager ourInstance = new SystemManager();
 
@@ -20,4 +22,13 @@ public class SystemManager{
 
 
     }
+
+    public void createAirport(String n){
+        airports.add(new Airport(n));
+    }
+
+    public Airline createAirline(String orig, String dest, Calendar date,String id){
+        return Airline;
+    }
+
 }
