@@ -8,7 +8,7 @@ public enum SeatClass {
     BUSI("Business"),
     ECO("Economy");
 
-    public void setName(String name) {
+    SeatClass(String name) {
         this.name = name;
     }
 

@@ -18,16 +18,13 @@ public class SystemManager{
         return ourInstance;
     }
 
-    private SystemManager() {
-
-
-    }
+    private SystemManager() {}
 
     public void createAirport(String n){
         airports.add(new Airport(n));
     }
 
-    public Airline createAirline(String n){
+    public void createAirline(String n){
         airlines.add(new Airline(n));
     }
 
