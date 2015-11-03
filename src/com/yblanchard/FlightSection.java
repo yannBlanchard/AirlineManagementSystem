@@ -13,6 +13,10 @@ public class FlightSection {
         return section;
     }
 
+    public FlightSection(SeatClass section) {
+        this.section = section;
+    }
+
     public boolean hasAvailableSeats(){
         return false;
     }

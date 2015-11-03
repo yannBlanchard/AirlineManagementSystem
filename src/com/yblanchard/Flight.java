@@ -54,7 +54,7 @@ public class Flight {
     }
 
     public boolean createSection(int rows,int cols,SeatClass s){
-        return  false;
+        return  sections.add(new FlightSection(s));
     }
 
     /*public FlightSection findSection(){
