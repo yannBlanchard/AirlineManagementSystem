@@ -29,41 +29,37 @@ public class Flight {
         this.origin = origin;
     }
 
-    /*public Airline getAirline(){
-        return Airline;
+    public Airport getOrigin() {
+        return origin;
     }
 
-    public String getID() {
-        return flightID;
-    }
-
-    public Airport getOrig(){
-        return  Airport;
-    }
-
-    public Airport getDest() {
-        return Airport;
-    }
-
-    public Calendar getDate() {
+    public Calendar getFlightDate() {
         return flightDate;
     }
 
-    public boolean hasSection(){
-        return false;
+    public String getFlightID() {
+        return flightID;
     }
 
-    public boolean hasSeats(){
-        return false;
+    public List<FlightSection> getSections() {
+        return sections;
     }
 
-    public boolean createSection(){
-        return false;
+    public Airline getAirline() {
+        return airline;
     }
 
-    public FlightSection findSection(){
+    public Airport getDestination() {
+        return destination;
+    }
+
+    public boolean createSection(int rows,int cols,SeatClass s){
+        return  false;
+    }
+
+    /*public FlightSection findSection(){
         return FlightSection;
-    }
-*/
+    }*/
+
     //public bookSeat
 }
