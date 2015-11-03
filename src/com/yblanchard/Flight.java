@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class Flight {
 
-
     private Calendar flightDate;
     private String flightID;
     private List<FlightSection> sections = new ArrayList<FlightSection>();
@@ -23,7 +22,14 @@ public class Flight {
         this.flightDate = flightDate;
     }
 
-    public Airline getAirline(){
+    public Flight(Calendar flightDate, String flightID, Airport destination, Airport origin) {
+        this.flightDate = flightDate;
+        this.flightID = flightID;
+        this.destination = destination;
+        this.origin = origin;
+    }
+
+    /*public Airline getAirline(){
         return Airline;
     }
 
@@ -58,6 +64,6 @@ public class Flight {
     public FlightSection findSection(){
         return FlightSection;
     }
-
+*/
     //public bookSeat
 }

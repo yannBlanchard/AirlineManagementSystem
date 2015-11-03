@@ -3,6 +3,7 @@ package com.yblanchard;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Yann on 31/10/2015.
@@ -29,6 +30,8 @@ public class SystemManager{
     }
 
     public void createFlight(String n,String orig,String dest, int year,int month,int day,String id){
-        airlines.get();
+
+
+       // airlines.get();
     }
 }
