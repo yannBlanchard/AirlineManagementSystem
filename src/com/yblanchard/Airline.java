@@ -28,12 +28,13 @@ public class Airline{
         this.name = name;
     }
 
-    public Flight createFlight(String orig,String dest, int year,int month,int day,String id){
+    /*public Flight createFlight(String orig,String dest, int year,int month,int day,String id){
         //Création de la calendar date
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.set(year,month,day);
         //Création du vol
-        return Flights.add(new Flight(calendar,id,dest,orig));
-    }
+
+        //return Flights.add(new Flight(calendar,id,dest,orig));
+    }*/
 
 }

@@ -3,6 +3,8 @@ package com.yblanchard;
 /**
  * Created by Yann on 01/11/2015.
  */
+
+
 public class Airport {
     private String code;
 
@@ -14,6 +16,6 @@ public class Airport {
         return code;
     }
 
-
+    
 
 }
