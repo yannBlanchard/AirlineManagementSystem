@@ -1,10 +1,8 @@
 package com.yblanchard;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -46,9 +44,14 @@ public class SystemManager{
         }
 
         List<Airline>air = new ArrayList<Airline>();
-        airlines.stream().filter(e -> e.getName() == n).forEach(air :: add);
-
+        //air.addAll(airlines.stream().filter(e -> e.getName().equals(n)).collect(Collectors.toList()));
+        airlines.stream().filter(e -> e.getName().equals(n)).map();
         //airlines.stream().forEach(x -> System.out.println());
+        Map<String, Airline> airlines = new HashMap<>();
+        Airline af = new Airline("AF");
+        airlines.put(af.getName(), af);
+
+       Airline af2 =  airlines.get("AF");
 
     }
 

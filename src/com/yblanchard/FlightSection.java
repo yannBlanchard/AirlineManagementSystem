@@ -17,7 +17,11 @@ public class FlightSection {
         this.section = section;
     }
 
+
+
     public boolean hasAvailableSeats(){
+
+
         return false;
     }
 
