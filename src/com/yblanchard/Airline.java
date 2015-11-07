@@ -14,13 +14,6 @@ public class Airline{
     private Map<String, Flight> flights = new HashMap<>();
     //private List<Flight> Flights = new ArrayList<Flight>();
 
-    public Map getAvailableFlights(){
-        return flights;
-    }
-
-    public boolean bookFlight(){
-        return false;
-    }
 
     public Airline(String name) {
         this.name = name;
@@ -53,4 +46,19 @@ public class Airline{
             return null;
         }
     }
+
+    public List<Flight> getAvailableFlights(Airport orig,Airport dest){
+        List<Flight> availableFlight = new ArrayList<>();
+        Iterator iterator = flights.values().iterator();
+        while (iterator.hasNext()){
+            iterator.next();
+            //Si il existe un vol avec l'origine et la destination passé en paramettre
+            if(flights.get(iterator).getOrigin().equals(orig) && flights.get(iterator).getDestination().equals(dest)){
+                availableFlight.add(flights.get(iterator));
+            }
+        }
+
+        return availableFlight;
+    }
+
 }

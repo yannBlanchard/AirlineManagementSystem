@@ -12,6 +12,10 @@ public class Seat {
         this.isBooked = isBooked;
     }
 
+    public void setIsBooked(Boolean isBooked) {
+        this.isBooked = isBooked;
+    }
+
     public Boolean getStatus() {
         return isBooked;
     }

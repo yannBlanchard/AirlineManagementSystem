@@ -1,8 +1,6 @@
 package com.yblanchard;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Yann on 01/11/2015.
@@ -11,7 +9,8 @@ public class Flight {
 
     private Calendar flightDate;
     private String flightID;
-    private List<FlightSection> sections = new ArrayList<FlightSection>();
+    //private List<FlightSection> sections = new ArrayList<FlightSection>();
+    private Map<SeatClass, FlightSection> sections = new HashMap<>();
     private Airline airline;
     private Airport destination;
     private Airport origin;
@@ -29,40 +28,28 @@ public class Flight {
         this.origin = origin;
     }
 
-    public Airport getOrigin() {
-        return origin;
+
+    public boolean createSection(int rows,int cols,SeatClass s){
+        //CrÃ©ation de la section
+
+        sections.put(s,new FlightSection(s,rows,cols));
+        return true;
+
     }
 
-    public Calendar getFlightDate() {
-        return flightDate;
+    public FlightSection findSection(SeatClass s){
+        return sections.get(s);
     }
 
-    public String getFlightID() {
-        return flightID;
-    }
-
-    public List<FlightSection> getSections() {
-        return sections;
-    }
-
-    public Airline getAirline() {
-        return airline;
+    public void bookSeat(SeatClass s, int row,char col){
+        sections.get(s).bookSeat(new SeatID(row,col));
     }
 
     public Airport getDestination() {
         return destination;
     }
 
-    public void createSection(int rows,int cols,SeatClass s){
-        //Création de la section
-        new FlightSection(s,rows,cols);
-
-
+    public Airport getOrigin() {
+        return origin;
     }
-
-    /*public FlightSection findSection(){
-        return FlightSection;
-    }*/
-
-    //public bookSeat
 }

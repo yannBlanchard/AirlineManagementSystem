@@ -26,9 +26,9 @@ public class FlightSection {
         char col = 'A';
         this.section = section;
 
-        //Création des rangées
+        //Crï¿½ation des rangï¿½es
         for(int i =1;i<=rows;i++){
-            //Création des siéges
+            //Crï¿½ation des siï¿½ges
             for(int j= 1;j<cols;j++){
                 seatID = new SeatID(i,col);
                 seats.put(""+i + col, new Seat(seatID,false));
@@ -38,11 +38,13 @@ public class FlightSection {
         }
     }
 
-    public boolean hasAvailableSeats(){
-        return false;
+    public void bookSeat(){
+
     }
 
-    public boolean bookSeat(){
-        return false;
+    public boolean bookSeat(SeatID sID){
+        seats.get(sID).setIsBooked(true);
+        return true;
     }
+
 }

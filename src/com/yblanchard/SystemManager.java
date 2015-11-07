@@ -64,12 +64,32 @@ public class SystemManager{
             System.out.println("L'airline n'existe pas.");
         }
         else{
-            airlines.get(n).createFlight(airports.get(orig),airports.get(dest),year,month,day,id);
+            airlines.get(n).createFlight(airports.get(orig), airports.get(dest), year, month, day, id);
         }
     }
 
     public void createSection(String air,String fID,int rows, int cols, SeatClass s){
         airlines.get(air).findFlight(fID).createSection(rows, cols, s);
+    }
+
+    public void findAvailableFlights(String orig,String dest){
+        Iterator<Airline> iterator = airlines.values().iterator();
+        while (iterator.hasNext()){
+            iterator.next();
+            airlines.get(iterator).getAvailableFlights(airports.get(orig),airports.get(dest));
+        }
+    }
+
+    public void bookSeat(String air,String fl,SeatClass s,int row,char col){
+        airlines.get(air).findFlight(fl).bookSeat(s,row,col);
+    }
+
+    public void displaySystemDetails(){
+        Iterator<Airline> iterator = airlines.values().iterator();
+        while (iterator.hasNext()){
+            iterator.next();
+            airlines.get(iterator);
+        }
     }
 
 }
