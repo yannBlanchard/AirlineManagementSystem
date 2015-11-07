@@ -1,9 +1,6 @@
 package com.yblanchard;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Yann on 01/11/2015.
@@ -33,18 +30,32 @@ public class FlightSection {
                 seatID = new SeatID(i,col);
                 seats.put(""+i + col, new Seat(seatID,false));
                 col++;
-                System.out.println(seatID);
             }
         }
     }
 
     public void bookSeat(){
-
+        Iterator<Seat> iterator = seats.values().iterator();
+        if(hasAvailableSeats() == true){
+            iterator.next();
+            seats.get(iterator).setIsBooked(true);
+        }
     }
 
     public boolean bookSeat(SeatID sID){
         seats.get(sID).setIsBooked(true);
         return true;
+    }
+
+    public boolean hasAvailableSeats(){
+        Iterator<Seat> iterator = seats.values().iterator();
+        while (iterator.hasNext()){
+            iterator.next();
+            if(seats.get(iterator).getStatus().equals(false)){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

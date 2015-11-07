@@ -61,4 +61,8 @@ public class Airline{
         return availableFlight;
     }
 
+    public void bookFlight(String fl,SeatClass s,int row,char col){
+        flights.get(fl).bookSeat(s,row,col);
+    }
+
 }

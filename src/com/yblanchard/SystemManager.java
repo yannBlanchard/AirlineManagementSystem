@@ -81,7 +81,7 @@ public class SystemManager{
     }
 
     public void bookSeat(String air,String fl,SeatClass s,int row,char col){
-        airlines.get(air).findFlight(fl).bookSeat(s,row,col);
+        airlines.get(air).findFlight(fl).findSection(s).bookSeat(new SeatID(row,col)); //.bookSeat(s,row,col);
     }
 
     public void displaySystemDetails(){
