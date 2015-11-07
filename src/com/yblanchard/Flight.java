@@ -53,8 +53,11 @@ public class Flight {
         return destination;
     }
 
-    public boolean createSection(int rows,int cols,SeatClass s){
-        return  sections.add(new FlightSection(s));
+    public void createSection(int rows,int cols,SeatClass s){
+        //Création de la section
+        new FlightSection(s,rows,cols);
+
+
     }
 
     /*public FlightSection findSection(){

@@ -64,15 +64,12 @@ public class SystemManager{
             System.out.println("L'airline n'existe pas.");
         }
         else{
-            airlines.get(n).createFlight(orig,dest,year,month,day,id);
+            airlines.get(n).createFlight(airports.get(orig),airports.get(dest),year,month,day,id);
         }
-
-        /*Airline af = new Airline("AF");
-        airlines.put(af.getName(), af);
-
-       Airline af2 =  airlines.get("AF");*/
-
     }
 
+    public void createSection(String air,String fID,int rows, int cols, SeatClass s){
+        airlines.get(air).findFlight(fID).createSection(rows, cols, s);
+    }
 
 }

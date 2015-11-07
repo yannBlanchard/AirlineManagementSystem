@@ -5,5 +5,10 @@ package com.yblanchard;
  */
 public class SeatID {
     private Integer row;
-    private Character column;
+    private char column;
+
+    public SeatID(Integer row, char column) {
+        this.row = row;
+        this.column = column;
+    }
 }

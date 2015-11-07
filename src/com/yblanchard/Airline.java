@@ -26,20 +26,31 @@ public class Airline{
         this.name = name;
     }
 
-    public Flight createFlight(String orig,String dest, int year,int month,int day,String id){
+    public Flight createFlight(Airport orig,Airport dest, int year,int month,int day,String id){
         //Création de la calendar date
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.set(year,month,day);
 
         //Vérification
         if(flights.get(id) == null){
-            System.out.println("L'id " + id + "existe deja.");
+            return flights.put(id,new Flight(calendar,id,dest,orig));
+
         }else{
-            return flights.put(id,new Flight(id,calendar));
+
+            System.out.println("L'id " + id + "existe deja.");
+            return null;
         }
         //Création du vol
-
-        return null;
     }
 
+
+    public Flight findFlight(String n){
+        if (flights.get(n) != null) {
+            return flights.get(n);
+        }
+        else {
+            System.out.println("No flight found.");
+            return null;
+        }
+    }
 }
