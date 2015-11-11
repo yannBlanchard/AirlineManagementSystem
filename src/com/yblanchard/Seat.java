@@ -28,6 +28,6 @@ public class Seat {
     public String toString() {
         String res;
         res = (isBooked==true)?"reservé":"disponible";
-        return "Siege numero " + seatNum.toString() + " : " + res +"\n";
+        return "Siege numero " + seatNum.toString() + " : " + res;
     }
 }

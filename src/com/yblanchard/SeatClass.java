@@ -12,10 +12,10 @@ public enum SeatClass {
         this.name = name;
     }
 
-    public String getName() {
+    /*public String getName() {
         return name;
     }
-
+    */
     private String name;
 
 }
