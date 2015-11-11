@@ -23,19 +23,22 @@ public class SystemManager{
 
     private SystemManager() {}
 
-    public void createAirport(String n){
+    public boolean createAirport(String n){
+        Boolean success = false;
         //On vérifie la taille de n
         if(n.length()==3) {
             //Si l'airport n'existe pas deja
             if (airports.get(n) == null) {
                 airports.put(n, new Airport(n));
+                success = true;
+
             } else {
                 System.out.println("L'airport " + n + " existe deja.");
             }
         }else{
             System.out.println("Le nombre de caractere doit être strictement égale à 3.");
         }
-
+        return success;
     }
 
     public void createAirline(String n){

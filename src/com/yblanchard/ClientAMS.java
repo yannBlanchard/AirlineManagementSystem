@@ -7,10 +7,10 @@ public class ClientAMS {
         SystemManager res  = SystemManager.getInstance();
         res.createAirport("CDG");
         res.createAirport("DEN");
-        res.createAirline("JET");
+        /*res.createAirline("JET");
         res.createFlight("JET", "CDG","DEN",2015,11,10,"123");
         res.createSection("JET","123",5,6,SeatClass.BUSI);
 
-        res.bookSeat("JET","123",SeatClass.BUSI,5,'B');
+        res.bookSeat("JET","123",SeatClass.BUSI,5,'B');*/
     }
 }
