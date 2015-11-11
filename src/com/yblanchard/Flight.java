@@ -84,13 +84,24 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight{" +
+        String res;
+        Iterator iterator = sections.keySet().iterator();
+        SeatClass cle;
+        /*return "Flight{" +
                 "flightDate=" + flightDate +
                 ", flightID='" + flightID + '\'' +
                 ", sections=" + sections +
                 ", airline=" + airline +
                 ", destination=" + destination +
                 ", origin=" + origin +
-                '}';
+                '}';*/
+        res = "vol "+ flightID + " de la compagnie "+ airline + " au départ de " + origin.toString() +
+                " et à destination de " + destination.toString() + ",départ à " + flightDate.getInstance().getTime() + "\n";
+
+        while (iterator.hasNext()){
+            cle = (SeatClass)iterator.next();
+            res = res + findSection(cle).toString()+ "\n\n";
+        }
+        return res;
     }
 }

@@ -18,9 +18,10 @@ public class ClientAMS {
         res.createSection("AIRFR","234",6,2,SeatClass.BUSI);
         res.findAvailableFlights("CDG","DEN");
 
-        res.bookSeat("AIRFR","234",SeatClass.BUSI,2,'B');
-        /*res.createSection("JET","123",5,6,SeatClass.BUSI);
+        res.bookSeat("AIRFR","234",SeatClass.BUSI,2,'B'); // plante
 
-        res.bookSeat("JET","123",SeatClass.BUSI,5,'B');*/
+        res.displaySystemDetails();
+
+
     }
 }

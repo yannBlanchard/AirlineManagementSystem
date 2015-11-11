@@ -70,4 +70,16 @@ public class Airline{
         }
     }
 
+    @Override
+    public String toString() {
+        Iterator iterator = flights.keySet().iterator();
+        String cle;
+        String res;
+        res = "------------- Compagnie " + name +" -------------\n";
+        while (iterator.hasNext()){
+            cle = (String)iterator.next();
+            res = res + flights.get(cle).toString();
+        }
+        return name;
+    }
 }

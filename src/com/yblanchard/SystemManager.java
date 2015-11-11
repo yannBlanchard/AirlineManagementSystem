@@ -118,10 +118,18 @@ public class SystemManager{
     }
 
     public void displaySystemDetails(){
-        Iterator<String> iterator = airlines.keySet().iterator();
+        Iterator iterator = airports.keySet().iterator();
+        String cle;
+        System.out.println("------------- Liste des aeroport -------------");
         while (iterator.hasNext()){
-            iterator.next();
-            airlines.get(iterator);
+            cle = (String)iterator.next();
+            System.out.println(airports.get(cle).toString());
+        }
+        System.out.println("------------- Liste des compagnie -------------");
+        iterator = airlines.keySet().iterator();
+        while (iterator.hasNext()){
+            cle = (String)iterator.next();
+            System.out.println(airlines.get(cle).toString());
         }
     }
 

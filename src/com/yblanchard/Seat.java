@@ -23,4 +23,11 @@ public class Seat {
     public SeatID getSeatNum() {
         return seatNum;
     }
+
+    @Override
+    public String toString() {
+        String res;
+        res = (isBooked==true)?"reservé":"disponible";
+        return "Siege numero " + seatNum.toString() + " : " + res +"\n";
+    }
 }

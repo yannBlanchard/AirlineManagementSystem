@@ -86,4 +86,16 @@ public class FlightSection {
         return false;
     }
 
+    @Override
+    public String toString() {
+        String res;
+        Iterator iterator = seats.keySet().iterator();
+        SeatID cle;
+        res = "       ----- Section "+ section + "-----\n";
+        while (iterator.hasNext()){
+            cle = (SeatID)iterator.next();
+            res = res + seats.get(cle).toString() + "\n\n";
+        }
+        return res;
+    }
 }
