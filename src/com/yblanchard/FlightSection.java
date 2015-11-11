@@ -91,10 +91,10 @@ public class FlightSection {
         String res;
         Iterator iterator = seats.keySet().iterator();
         SeatID cle;
-        res = "       ----- Section "+ section + "-----\n";
+        res = "----- Section "+ section + "-----\n";
         while (iterator.hasNext()){
             cle = (SeatID)iterator.next();
-            res = res + seats.get(cle).toString() + "\n\n";
+            res = res + seats.get(cle).toString() + "";
         }
         return res;
     }

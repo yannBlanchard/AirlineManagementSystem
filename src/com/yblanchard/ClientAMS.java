@@ -19,6 +19,7 @@ public class ClientAMS {
         //create flight
         res.createFlight("JET", "CDG","DEN",2015,11,10,"123");
         res.createFlight("AIRFR", "CDG","DEN",2015,11,10,"234");
+        res.createFlight("AIRFR", "CDG","DEN",2015,11,10,"234");
         res.createFlight("EASY", "LON","DEN",2015,11,10,"147");
         res.createFlight("JET", "CDG","DEN",2015,11,10,"486");
         //create section
@@ -26,7 +27,7 @@ public class ClientAMS {
         res.createSection("JET","123",6,2,SeatClass.BUSI);
         res.createSection("AIRFR","234",6,2,SeatClass.BUSI);
         res.createSection("EASY","147",2,3,SeatClass.FIRST);
-        //find avaailable flight
+        //find available flight
         //res.findAvailableFlights("CDG","DEN");
         //book seat
         res.bookSeat("AIRFR","234",SeatClass.BUSI,2,'B'); // plante

@@ -143,15 +143,15 @@ public class SystemManagerTest {
     @DataProvider(name = "idExisteDeja")
     public Object[][] idExisteDeja() {
         return new Object[][]{
-                {"DELTA","DEN","LON",2015,10,10,"567",true},
-                {"AIRFR","DFW","LON",2015,11,5,"567",false}
+                {"AIRFR", "CDG","DEN",2015,11,10,"197",true},
+                {"AIRFR", "CDG","DEN",2015,11,10,"197",false}
         };
     }
     @DataProvider(name = "AirlineExistePas")
     public Object[][] AirlineExistePas() {
         return new Object[][]{
-                {"DELTA","DEN","LON",2015,10,10,"567",true},
-                {"QSDF","DFW","LON",2015,11,5,"567",false}
+                {"DELTA","DEN","LON",2015,10,10,"987",true},
+                {"QSDF","DFW","LON",2015,11,5,"963",false}
         };
     }
 

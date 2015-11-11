@@ -99,7 +99,7 @@ public class SystemManager{
     public void findAvailableFlights(String orig,String dest){
         Iterator iterator = airlines.keySet().iterator();
         String cle;
-        List<Flight> availableFlight = new ArrayList<>();
+        List<Flight> availableFlight;
         while (iterator.hasNext()){
             cle = (String)iterator.next();
             System.out.println(cle);
