@@ -48,6 +48,7 @@ public class Airline{
     }
 
     public List<Flight> getAvailableFlights(Airport orig,Airport dest){
+        Boolean find = false;
         List<Flight> availableFlight = new ArrayList<>();
         Iterator iterator = flights.values().iterator();
         while (iterator.hasNext()){
@@ -55,7 +56,11 @@ public class Airline{
             //Si il existe un vol avec l'origine et la destination passé en paramettre
             if(flights.get(iterator).getOrigin().equals(orig) && flights.get(iterator).getDestination().equals(dest)){
                 availableFlight.add(flights.get(iterator));
+                find = true;
             }
+        }
+        if(find == false){
+            System.err.println("No flight available.");
         }
 
         return availableFlight;

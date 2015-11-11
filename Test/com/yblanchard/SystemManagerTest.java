@@ -125,8 +125,54 @@ public class SystemManagerTest {
         };
     }
 
+    @DataProvider(name = "destinationExistePas")
+    public Object[][] destinationExistePas() {
+        return new Object[][]{
+                {"DELTA","DEN","ABC",2015,10,10,"345",false},
+                {"AIRFR","DFW","LON",2015,11,5,"456",true}
+        };
+    }
+
+    @DataProvider(name = "origineExistePas")
+    public Object[][] origineExistePas() {
+        return new Object[][]{
+                {"DELTA","DEF","LON",2015,10,10,"345",false},
+                {"AIRFR","DFW","LON",2015,11,5,"456",true}
+        };
+    }
+    @DataProvider(name = "idExisteDeja")
+    public Object[][] idExisteDeja() {
+        return new Object[][]{
+                {"DELTA","DEN","LON",2015,10,10,"567",true},
+                {"AIRFR","DFW","LON",2015,11,5,"567",false}
+        };
+    }
+    @DataProvider(name = "AirlineExistePas")
+    public Object[][] AirlineExistePas() {
+        return new Object[][]{
+                {"DELTA","DEN","LON",2015,10,10,"567",true},
+                {"QSDF","DFW","LON",2015,11,5,"567",false}
+        };
+    }
+
     @Test(dataProvider = "createDifferentFlight")
     public void createDifferentFlight(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
         assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
     }
+
+    @Test(dataProvider = "origineExistePas")
+    public void origineExistePas(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
+        assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
+    }
+
+    @Test(dataProvider = "idExisteDeja")
+    public void idExisteDeja(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
+        assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
+    }
+
+    @Test(dataProvider = "AirlineExistePas")
+    public void AirlineExistePas(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
+        assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
+    }
+
 }
