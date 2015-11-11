@@ -33,42 +33,58 @@ public class SystemManager{
                 success = true;
 
             } else {
-                System.out.println("L'airport " + n + " existe deja.");
+                System.err.println("L'airport " + n + " existe deja.");
             }
         }else{
-            System.out.println("Le nombre de caractere doit être strictement égale à 3.");
+            System.err.println("Le nombre de caractere doit être strictement égale à 3.");
         }
         return success;
     }
 
-    public void createAirline(String n){
+    public boolean createAirline(String n){
+        Boolean success = false;
         //On vérifie la taille
         if(n.length()<=5){
             //Si l'airline n'existe pas
             if(airlines.get(n) == null){
                 airlines.put(n,new Airline(n));
+                success = true;
             }
             else{
-                System.out.println("L'airline " + n + " existe deja.");
+                System.err.println("L'airline " + n + " existe deja.");
             }
         }else{
-            System.out.println("Le nombre de caractere doit être inférieur ou égale à 5.");
+            System.err.println("Le nombre de caractere doit être inférieur ou égale à 5.");
         }
+        return success;
     }
 
-    public void createFlight(String n,String orig,String dest, int year,int month,int day,String id){
-
+    public boolean createFlight(String n,String orig,String dest, int year,int month,int day,String id){
+        Boolean success = false;
         //List<Airline>air = new ArrayList<Airline>();
         //air.addAll(airlines.stream().filter(e -> e.getName().equals(n)).collect(Collectors.toList()));
         //airlines.stream().filter(e -> e.getName().equals(n)).map();
 
         //Ajouter test sur l'origine et la destination
-        if(airlines.get(n) == null){
-            System.out.println("L'airline n'existe pas.");
+        if(airlines.get(n) != null){
+            if(airports.get(orig) != null && airports.get(dest)!=null) {
+                if(airlines.get(n).createFlight(airports.get(orig), airports.get(dest), year, month, day, id) != null){
+                    success = true;
+                }
+                else{
+                    success = false;
+                }
+            }
+            else{
+                success = false;
+                System.err.println("L'origine ou la destination n'existe pas.");
+            }
         }
         else{
-            airlines.get(n).createFlight(airports.get(orig), airports.get(dest), year, month, day, id);
+            success = false;
+            System.err.println("L'airline n'existe pas.");
         }
+        return success;
     }
 
     public void createSection(String air,String fID,int rows, int cols, SeatClass s){

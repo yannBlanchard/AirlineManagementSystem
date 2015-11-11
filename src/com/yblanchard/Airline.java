@@ -20,20 +20,20 @@ public class Airline{
     }
 
     public Flight createFlight(Airport orig,Airport dest, int year,int month,int day,String id){
+        Flight flight;
         //Création de la calendar date
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.set(year,month,day);
-
-        //Vérification
+        //Vérification de l'id
         if(flights.get(id) == null){
-            return flights.put(id,new Flight(calendar,id,dest,orig));
+            flight = new Flight(calendar,id,dest,orig);
+            flights.put(id,flight);
+            return flight;
 
         }else{
-
-            System.out.println("L'id " + id + "existe deja.");
+            System.err.println("L'id " + id + "existe deja.");
             return null;
         }
-        //Création du vol
     }
 
 
@@ -42,7 +42,7 @@ public class Airline{
             return flights.get(n);
         }
         else {
-            System.out.println("No flight found.");
+            System.err.println("No flight found.");
             return null;
         }
     }
