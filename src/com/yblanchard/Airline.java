@@ -42,32 +42,32 @@ public class Airline{
             return flights.get(n);
         }
         else {
-            System.err.println("No flight found.");
+            System.err.println("Vol non trouvé.");
             return null;
         }
     }
 
     public List<Flight> getAvailableFlights(Airport orig,Airport dest){
-        Boolean find = false;
+        String cle;
         List<Flight> availableFlight = new ArrayList<>();
-        Iterator iterator = flights.values().iterator();
+        Iterator iterator = flights.keySet().iterator();
         while (iterator.hasNext()){
-            iterator.next();
+            cle = (String)iterator.next();
             //Si il existe un vol avec l'origine et la destination passé en paramettre
-            if(flights.get(iterator).getOrigin().equals(orig) && flights.get(iterator).getDestination().equals(dest)){
-                availableFlight.add(flights.get(iterator));
-                find = true;
+            if(flights.get(cle).getOrigin().equals(orig) && flights.get(cle).getDestination().equals(dest)){
+                availableFlight.add(flights.get(cle));
             }
-        }
-        if(find == false){
-            System.err.println("No flight available.");
         }
 
         return availableFlight;
     }
 
     public void bookFlight(String fl,SeatClass s,int row,char col){
-        flights.get(fl).bookSeat(s,row,col);
+        if(flights.get(fl) != null) {
+            flights.get(fl).bookSeat(s, row, col);
+        }else{
+            System.err.println("Le vol n'existe pas.");
+        }
     }
 
 }

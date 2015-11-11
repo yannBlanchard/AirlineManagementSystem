@@ -47,15 +47,19 @@ public class Flight {
             return sections.get(s);
         }
         else{
-            System.err.println("Section not found");
+            System.err.println("Section non trouvée");
             return null;
         }
     }
 
     public void bookSeat(SeatClass s, int row,char col){
-
-        findSection(s).bookSeat(new SeatID(row, col));
-        //sections.get(s).bookSeat(new SeatID(row,col));
+        if(sections.get(s) != null) {
+            findSection(s).bookSeat(new SeatID(row, col));
+            //sections.get(s).bookSeat(new SeatID(row,col));
+        }
+        else{
+            System.err.println("La section n'existe pas.");
+        }
     }
 
     public Airport getDestination() {
@@ -76,5 +80,17 @@ public class Flight {
 
     public Airline getAirline() {
         return airline;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightDate=" + flightDate +
+                ", flightID='" + flightID + '\'' +
+                ", sections=" + sections +
+                ", airline=" + airline +
+                ", destination=" + destination +
+                ", origin=" + origin +
+                '}';
     }
 }

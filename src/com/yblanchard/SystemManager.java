@@ -89,23 +89,36 @@ public class SystemManager{
     }
 
     public void createSection(String air,String fID,int rows, int cols, SeatClass s){
-        airlines.get(air).findFlight(fID).createSection(rows, cols, s);
+        if(airlines.get(air) != null) {
+            airlines.get(air).findFlight(fID).createSection(rows, cols, s);
+        }else{
+            System.err.println("La compagnie n'existe pas.");
+        }
     }
 
     public void findAvailableFlights(String orig,String dest){
-        Iterator<Airline> iterator = airlines.values().iterator();
+        Iterator iterator = airlines.keySet().iterator();
+        String cle;
+        List<Flight> availableFlight = new ArrayList<>();
         while (iterator.hasNext()){
-            iterator.next();
-            airlines.get(iterator).getAvailableFlights(airports.get(orig),airports.get(dest));
+            cle = (String)iterator.next();
+            System.out.println(cle);
+            availableFlight = airlines.get(cle).getAvailableFlights(airports.get(orig), airports.get(dest));
+            availableFlight.stream().forEach(System.out::println);
         }
     }
 
     public void bookSeat(String air,String fl,SeatClass s,int row,char col){
-        airlines.get(air).findFlight(fl).findSection(s).bookSeat(new SeatID(row,col)); //.bookSeat(s,row,col);
+        if(airlines.get(air) != null) {
+            airlines.get(air).bookFlight(fl, s, row, col);
+            //airlines.get(air).findFlight(fl).findSection(s).bookSeat(new SeatID(row,col)); //.bookSeat(s,row,col);
+        }else{
+            System.err.println("La compagnie n'existe pas.");
+        }
     }
 
     public void displaySystemDetails(){
-        Iterator<Airline> iterator = airlines.values().iterator();
+        Iterator<String> iterator = airlines.keySet().iterator();
         while (iterator.hasNext()){
             iterator.next();
             airlines.get(iterator);

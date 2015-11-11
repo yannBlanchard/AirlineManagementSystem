@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class FlightSection {
     private SeatClass section;
-    private Map<String, Seat> seats = new HashMap<>();
+    private Map<SeatID, Seat> seats = new HashMap<>();
     //private List<Seat> seats = new ArrayList<Seat>();
     public SeatClass getSeatClass(){
         return section;
@@ -26,9 +26,10 @@ public class FlightSection {
             //Cr�ation des rang�es
             for (int i = 1; i <= rows; i++) {
                 //Cr�ation des si�ges
-                for (int j = 1; j < cols; j++) {
+                col = 'A';
+                for (int j = 1; j <= cols; j++) {
                     seatID = new SeatID(i, col);
-                    seats.put("" + i + col, new Seat(seatID, false));
+                    seats.put(seatID, new Seat(seatID, false));
                     col++;
                 }
             }
@@ -38,14 +39,15 @@ public class FlightSection {
     }
 
     public void bookSeat(){
-        Iterator<Seat> iterator = seats.values().iterator();
+        Iterator iterator = seats.keySet().iterator();
+        String cle;
         if(hasAvailableSeats() == true){
             //On recherche le premier siége de libre
             while (iterator.hasNext()){
-                iterator.next();
+                cle = (String)iterator.next();
                 //S'il n'est pas déjà réservé alors on le réserve
-                if(seats.get(iterator).getStatus().equals(false)){
-                    seats.get(iterator).setIsBooked(true);
+                if(seats.get(cle).getStatus().equals(false)){
+                    seats.get(cle).setIsBooked(true);
                 }
             }
 
