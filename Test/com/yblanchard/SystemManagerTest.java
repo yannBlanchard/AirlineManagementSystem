@@ -56,15 +56,15 @@ public class SystemManagerTest {
         };
     }
 
-    @Test(dataProvider = "DifferentAirport")
+    @Test(dataProvider = "DifferentAirport",groups = { "airport" })
     public void DifferentAirport(String p1,boolean p2) throws Exception {
         assertEquals(res.createAirport(p1),p2);
     }
-    @Test(dataProvider = "testNbCaractCreateAirport")
+    @Test(dataProvider = "testNbCaractCreateAirport",groups = { "airport" })
     public void testNbCaractCreateAirport(String p1,boolean p2) throws Exception {
         assertEquals(res.createAirport(p1),p2);
     }
-    @Test(dataProvider = "testAirportAlreadyExist")
+    @Test(dataProvider = "testAirportAlreadyExist",groups = { "airport" })
     public void testAirportAlreadyExist(String p1,boolean p2) throws Exception {
         assertEquals(res.createAirport(p1),p2);
     }
@@ -100,15 +100,15 @@ public class SystemManagerTest {
         };
     }
 
-    @Test(dataProvider = "createDifferentAirline")
+    @Test(dataProvider = "createDifferentAirline",groups = { "airline" },dependsOnGroups = { "airport.*" })
     public void createDifferentAirline(String p1,boolean p2) throws Exception {
         assertEquals(res.createAirline(p1),p2);
     }
-    @Test(dataProvider = "testNbCaractCreateAirline")
+    @Test(dataProvider = "testNbCaractCreateAirline",groups = { "airline" },dependsOnGroups = { "airport.*" })
     public void testNbCaractCreateAirline(String p1,boolean p2) throws Exception {
         assertEquals(res.createAirline(p1),p2);
     }
-    @Test(dataProvider = "testAirlineAlreadyExist")
+    @Test(dataProvider = "testAirlineAlreadyExist",groups = { "airline" },dependsOnGroups = { "airport.*" })
     public void testAirlineAlreadyExist(String p1,boolean p2) throws Exception {
         assertEquals(res.createAirline(p1),p2);
     }
@@ -155,22 +155,22 @@ public class SystemManagerTest {
         };
     }
 
-    @Test(dataProvider = "createDifferentFlight")
+    @Test(dataProvider = "createDifferentFlight",groups = { "flight" },dependsOnGroups = { "airline.*" })
     public void createDifferentFlight(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
         assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
     }
 
-    @Test(dataProvider = "origineExistePas")
+    @Test(dataProvider = "origineExistePas",groups = { "flight" },dependsOnGroups = { "airline.*" })
     public void origineExistePas(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
         assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
     }
 
-    @Test(dataProvider = "idExisteDeja")
+    @Test(dataProvider = "idExisteDeja",groups = { "flight" },dependsOnGroups = { "airline.*" })
     public void idExisteDeja(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
         assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
     }
 
-    @Test(dataProvider = "AirlineExistePas")
+    @Test(dataProvider = "AirlineExistePas",groups = { "flight" },dependsOnGroups = { "airline.*" })
     public void AirlineExistePas(String p1,String p2,String p3,int i1,int i2,int i3,String p4,boolean b1) throws Exception {
         assertEquals(res.createFlight(p1, p2, p3, i1, i2,i3,p4),b1);
     }

@@ -59,7 +59,7 @@ public class FlightSection {
 
     public boolean bookSeat(SeatID sID){
         Boolean success = false;
-        if(seats.get(sID) != null) {
+        if(seats.containsKey(sID)) {
             if(seats.get(sID).getStatus().equals(false)) {
                 seats.get(sID).setIsBooked(true);
                 success = true;
