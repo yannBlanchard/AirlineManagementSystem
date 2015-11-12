@@ -88,12 +88,19 @@ public class SystemManager{
         return success;
     }
 
-    public void createSection(String air,String fID,int rows, int cols, SeatClass s){
+    public boolean createSection(String air,String fID,int rows, int cols, SeatClass s){
+        Boolean success;
         if(airlines.get(air) != null) {
-            airlines.get(air).findFlight(fID).createSection(rows, cols, s);
+            if(airlines.get(air).findFlight(fID).createSection(rows, cols, s) == true){
+                success = true;
+            }else{
+                success= false;
+            }
         }else{
             System.err.println("La compagnie n'existe pas.");
+            success = false;
         }
+        return success;
     }
 
     public void findAvailableFlights(String orig,String dest){
