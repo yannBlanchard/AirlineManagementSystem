@@ -12,7 +12,7 @@ public class ClientAMS {
         res.createAirport("AZ");
         res.createAirport("AZER");
 
-        //create airline
+        //create airlines
         res.createAirline("JET");
         res.createAirline("EASY");
         res.createAirline("AIRFR");
@@ -25,12 +25,12 @@ public class ClientAMS {
         //create section
         res.createSection("JET","123",5,5,SeatClass.ECO);
         res.createSection("JET","123",6,2,SeatClass.BUSI);
-        res.createSection("AIRFR","234",6,2,SeatClass.BUSI);
+        res.createSection("AIRFR","234",6,3,SeatClass.BUSI);
         res.createSection("EASY","147",2,3,SeatClass.FIRST);
         //find available flight
         //res.findAvailableFlights("CDG","DEN");
         //book seat
-        res.bookSeat("AIRFR","234",SeatClass.BUSI,2,'B'); // plante
+        res.bookSeat("AIRFR","234",SeatClass.BUSI,6,'C'); // plante
         //display system
        // res.displaySystemDetails();*/
 
