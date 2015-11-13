@@ -33,8 +33,18 @@ public class Flight {
         Boolean success = false;
         //Création de la section
         if(sections.get(s) == null) {
-            sections.put(s, new FlightSection(s, rows, cols));
-            success = true;
+            if(rows <=100 && cols <=10) {
+                if(rows > 0 && cols > 0) {
+                    sections.put(s, new FlightSection(s, rows, cols));
+                    success = true;
+                }else{
+                    System.err.println("Le nombre de siège par rangées doit être supérieur à 0 et le nombre de rangèe doit être supérieur à 0");
+                    success = false;
+                }
+            }else{
+                System.err.println("Le nombre de siège par rangées doit être inférieur ou égale à 100 et le nombre de rangèe doit être inférieur ou égale à 10");
+                success = false;
+            }
         }else{
             System.err.println("La section existe déjà.");
             success = false;

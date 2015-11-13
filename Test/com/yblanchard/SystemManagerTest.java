@@ -196,7 +196,7 @@ public class SystemManagerTest {
     public Object[][] flightIDExistePas() {
         return new Object[][]{
                 {"AIRFR","167",2,2,SeatClass.BUSI,false},
-                {"AIRFR","345",2,2,SeatClass.ECO,true}
+                {"AIRFR","345",2,2,SeatClass.ECO,false}
         };
     }
     @Test(dataProvider = "flightIDExistePas",groups = { "section" },dependsOnGroups = { "flight.*" })
@@ -217,10 +217,10 @@ public class SystemManagerTest {
     @DataProvider(name = "nombreDeSiegeEgaleInf0")
     public Object[][] nombreDeSiegeEgaleInf0() {
         return new Object[][]{
-                {"DELTA","123",1,0,SeatClass.BUSI,false},
-                {"DELTA","123",1,-1,SeatClass.BUSI,false},
-                {"DELTA","123",-1,3,SeatClass.BUSI,false},
-                {"DELTA","123",0,2,SeatClass.ECO,false}
+                {"AIRFR","234",1,0,SeatClass.BUSI,false},
+                {"AIRFR","234",1,-1,SeatClass.BUSI,false},
+                {"AIRFR","234",-1,3,SeatClass.BUSI,false},
+                {"AIRFR","234",0,2,SeatClass.ECO,false}
         };
     }
     @Test(dataProvider = "nombreDeSiegeEgaleInf0",groups = { "section" },dependsOnGroups = { "flight.*" })
@@ -241,7 +241,7 @@ public class SystemManagerTest {
     @DataProvider(name = "nbSiegeSuperieur10")
     public Object[][] nbSiegeSuperieur10() {
         return new Object[][]{
-                {"DELTA","123",2,10,SeatClass.BUSI,false},
+                {"DELTA","123",2,10,SeatClass.BUSI,true},
                 {"DELTA","123",3,30,SeatClass.ECO,false}
         };
     }

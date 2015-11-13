@@ -18,4 +18,6 @@ public enum SeatClass {
     */
     private String name;
 
+
+
 }

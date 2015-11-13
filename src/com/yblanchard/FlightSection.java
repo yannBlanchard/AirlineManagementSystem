@@ -23,15 +23,19 @@ public class FlightSection {
         char col = 'A';
         this.section = section;
         if(rows <=100 && cols <=10) {
-            //Cr�ation des rang�es
-            for (int i = 1; i <= rows; i++) {
-                //Cr�ation des si�ges
-                col = 'A';
-                for (int j = 1; j <= cols; j++) {
-                    seatID = new SeatID(i, col);
-                    seats.put(seatID, new Seat(seatID, false));
-                    col++;
+            if(rows > 0 && cols > 0) {
+                //Cr�ation des rang�es
+                for (int i = 1; i <= rows; i++) {
+                    //Cr�ation des si�ges
+                    col = 'A';
+                    for (int j = 1; j <= cols; j++) {
+                        seatID = new SeatID(i, col);
+                        seats.put(seatID, new Seat(seatID, false));
+                        col++;
+                    }
                 }
+            }else{
+                System.err.println("Le nombre de siège par rangées doit être supérieur à 0 et le nombre de rangèe doit être supérieur à 0");
             }
         }else{
             System.err.println("Le nombre de siège par rangées doit être inférieur ou égale à 100 et le nombre de rangèe doit être inférieur ou égale à 10");
