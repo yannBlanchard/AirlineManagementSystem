@@ -59,8 +59,8 @@ public class FlightSection {
 
     public boolean bookSeat(SeatID sID){
         Boolean success = false;
-        if(seats.containsKey(sID)) {
-            if(seats.get(sID).getStatus().equals(false)) {
+        if(seats.get(sID) != null) {
+            if(!seats.get(sID).getStatus()) {
                 seats.get(sID).setIsBooked(true);
                 success = true;
             }else{
@@ -98,4 +98,7 @@ public class FlightSection {
         }
         return res;
     }
+
+
+
 }
