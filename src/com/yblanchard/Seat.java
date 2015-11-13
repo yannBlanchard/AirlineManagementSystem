@@ -27,7 +27,9 @@ public class Seat {
     @Override
     public String toString() {
         String res;
-        res = (isBooked==true)?"reservé":"disponible";
+        res = (isBooked)?"reservé":"disponible";
         return "Siege numero " + seatNum.toString() + " : " + res;
     }
+
+
 }
