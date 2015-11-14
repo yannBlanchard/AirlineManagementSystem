@@ -90,9 +90,15 @@ public class SystemManager{
 
     public boolean createSection(String air,String fID,int rows, int cols, SeatClass s){
         Boolean success;
+        Flight flight;
         if(airlines.get(air) != null) {
-            if(airlines.get(air).findFlight(fID).createSection(rows, cols, s) == true){
-                success = true;
+            flight = airlines.get(air).findFlight(fID);
+            if(flight != null){
+                if(flight.createSection(rows, cols, s) == true) {
+                    success = true;
+                }else{
+                    success = false;
+                }
             }else{
                 success= false;
             }
@@ -115,13 +121,16 @@ public class SystemManager{
         }
     }
 
-    public void bookSeat(String air,String fl,SeatClass s,int row,char col){
+    public boolean bookSeat(String air,String fl,SeatClass s,int row,char col){
+        boolean success = false;
         if(airlines.get(air) != null) {
-            airlines.get(air).bookFlight(fl, s, row, col);
+            success =airlines.get(air).bookFlight(fl, s, row, col);
             //airlines.get(air).findFlight(fl).findSection(s).bookSeat(new SeatID(row,col)); //.bookSeat(s,row,col);
         }else{
             System.err.println("La compagnie n'existe pas.");
+            success = false;
         }
+        return success;
     }
 
     public void displaySystemDetails(){

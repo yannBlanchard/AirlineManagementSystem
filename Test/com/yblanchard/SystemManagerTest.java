@@ -189,7 +189,7 @@ public class SystemManagerTest {
     }
     @Test(dataProvider = "createDifferentSection",groups = { "section" },dependsOnGroups = { "flight.*" })
     public void createDifferentSection(String p1,String p2,int i1,int i2,SeatClass s1,boolean b1) throws Exception {
-        assertEquals(res.createSection(p1,p2,i1,i2,s1),b1);
+        assertEquals(res.createSection(p1, p2, i1, i2, s1),b1);
     }
 
     @DataProvider(name = "flightIDExistePas")
@@ -249,4 +249,106 @@ public class SystemManagerTest {
     public void nbSiegeSuperieur10(String p1,String p2,int i1,int i2,SeatClass s1,boolean b1) throws Exception {
         assertEquals(res.createSection(p1,p2,i1,i2,s1),b1);
     }
+
+    /*-----------------------------------------------------------------------------------
+     *
+     *                                Test bookSeat
+     *
+     *----------------------------------------------------------------------------------*/
+
+    @DataProvider(name = "reservationSiegeOk")
+    public Object[][] reservationSiegeOk() {
+        return new Object[][]{
+                {"DELTA","123",SeatClass.BUSI,1,'A',true},
+                {"DELTA","123",SeatClass.BUSI,1,'B',true}
+        };
+    }
+
+    @Test(dataProvider = "reservationSiegeOk",groups = { "bookSeat" },dependsOnGroups = { "section.*" })
+    public void reservationSiegeOk(String p1,String p2,SeatClass s,int i1,char c1,boolean b1) throws Exception {
+        assertEquals(res.bookSeat(p1, p2, s, i1, c1),b1);
+    }
+
+    @DataProvider(name = "airlineExistePas")
+    public Object[][] airlineExistePas() {
+        return new Object[][]{
+                {"TOTO","123",SeatClass.BUSI,1,'C',false},
+                {"TUTU","123",SeatClass.BUSI,1,'D',false}
+        };
+    }
+
+    @Test(dataProvider = "airlineExistePas",groups = { "bookSeat" },dependsOnGroups = { "section.*" })
+    public void airlineExistePas(String p1,String p2,SeatClass s,int i1,char c1,boolean b1) throws Exception {
+        assertEquals(res.bookSeat(p1,p2,s,i1,c1),b1);
+    }
+
+    @DataProvider(name = "flightIdExistePas")
+    public Object[][] flightIdExistePas() {
+        return new Object[][]{
+                {"DELTA","159",SeatClass.BUSI,1,'C',false},
+                {"DELTA","753",SeatClass.BUSI,1,'D',false}
+        };
+    }
+
+    @Test(dataProvider = "flightIdExistePas",groups = { "bookSeat" },dependsOnGroups = { "section.*" })
+    public void flightIdExistePas(String p1,String p2,SeatClass s,int i1,char c1,boolean b1) throws Exception {
+        assertEquals(res.bookSeat(p1,p2,s,i1,c1),b1);
+    }
+
+    @DataProvider(name = "seatClassExistePas")
+    public Object[][] seatClassExistePas() {
+        return new Object[][]{
+                {"DELTA","123",SeatClass.ECO,1,'C',false},
+                {"DELTA","123",SeatClass.FIRST,1,'D',false}
+        };
+    }
+
+    @Test(dataProvider = "seatClassExistePas",groups = { "bookSeat" },dependsOnGroups = { "section.*" })
+    public void seatClassExistePas(String p1,String p2,SeatClass s,int i1,char c1,boolean b1) throws Exception {
+        assertEquals(res.bookSeat(p1,p2,s,i1,c1),b1);
+    }
+
+    @DataProvider(name = "siegeExistePas")
+    public Object[][] siegeExistePas() {
+        return new Object[][]{
+                {"DELTA","123",SeatClass.BUSI,3,'C',false},
+                {"DELTA","123",SeatClass.BUSI,1,'K',false}
+        };
+    }
+
+    @Test(dataProvider = "siegeExistePas",groups = { "bookSeat" },dependsOnGroups = { "section.*" })
+    public void siegeExistePas(String p1,String p2,SeatClass s,int i1,char c1,boolean b1) throws Exception {
+        assertEquals(res.bookSeat(p1,p2,s,i1,c1),b1);
+    }
+
+    @DataProvider(name = "verificationSiegeBienReserve")
+    public Object[][] verificationSiegeBienReserve() {
+        return new Object[][]{
+                {"AIRFR","456",SeatClass.BUSI,2,'A',true},
+                {"AIRFR","456",SeatClass.BUSI,2,'A',false}
+        };
+    }
+
+    @Test(dataProvider = "verificationSiegeBienReserve",groups = { "bookSeat" },dependsOnGroups = { "section.*" })
+    public void verificationSiegeBienReserve(String p1,String p2,SeatClass s,int i1,char c1,boolean b1) throws Exception {
+        assertEquals(res.bookSeat(p1, p2, s, i1, c1), b1);
+    }
+
+    /*-----------------------------------------------------------------------------------
+     *
+     *                                Test findFlight
+     *
+     *----------------------------------------------------------------------------------*/
+    /*@DataProvider(name = "placeEncoreDisponible")
+    public Object[][] placeEncoreDisponible() {
+        return new Object[][]{
+                {"DELTA","123",2,10,SeatClass.BUSI,true},
+                {"DELTA","123",3,30,SeatClass.ECO,false}
+        };
+    }
+    @Test(dataProvider = "placeEncoreDisponible",groups = { "findFlight" },dependsOnGroups = { "section.*" })
+    public void placeEncoreDisponible(String p1,String p2,int i1,int i2,SeatClass s1,boolean b1) throws Exception {
+
+        assertEquals(res.createSection(p1,p2,i1,i2,s1),b1);
+    }*/
 }

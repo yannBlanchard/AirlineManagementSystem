@@ -62,12 +62,16 @@ public class Airline{
         return availableFlight;
     }
 
-    public void bookFlight(String fl,SeatClass s,int row,char col){
+    public boolean bookFlight(String fl,SeatClass s,int row,char col){
+        Boolean success= false;
         if(flights.get(fl) != null) {
-            flights.get(fl).bookSeat(s, row, col);
+            success =flights.get(fl).bookSeat(s, row, col);
+            //success = true;
         }else{
             System.err.println("Le vol n'existe pas.");
+            success = false;
         }
+        return success;
     }
 
     @Override

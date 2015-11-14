@@ -62,17 +62,21 @@ public class Flight {
         }
     }
 
-    public void bookSeat(SeatClass s, int row,char col){
+    public boolean bookSeat(SeatClass s, int row,char col){
+        Boolean success = false;
         SeatID sID;
         if(sections.get(s) != null) {
             sID = new SeatID(row,col);
-            findSection(s).bookSeat(sID);
+            success = findSection(s).bookSeat(sID);
+
             //findSection(s).bookSeat(new SeatID(row, col));
             //sections.get(s).bookSeat(new SeatID(row,col));
         }
         else{
             System.err.println("La section n'existe pas.");
+            success = false;
         }
+        return success;
     }
 
     public Airport getDestination() {
