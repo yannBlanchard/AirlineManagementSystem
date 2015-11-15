@@ -345,7 +345,7 @@ public class SystemManagerTest {
         res.createFlight("AIRFR","DEN","CDG",2015,10,11,"684");
         res.createSection("AIRFR", "684", 1, 2, SeatClass.BUSI);
         res.bookSeat("AIRFR", "684", SeatClass.BUSI, 1, 'A');
-        assertEquals(res.findAvailableFlights("DEN", "CGD"),true);
+        assertEquals(res.findAvailableFlights("DEN","CDG"),true);
     }
 
 

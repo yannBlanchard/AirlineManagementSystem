@@ -121,8 +121,6 @@ public class SystemManager{
             if(availableFlight.size() != 0) {
                 availableFlight.stream().forEach(System.out::println);
                 success = true;
-            }else{
-                success = false;
             }
             //success = (availableFlight !=null)?true:false;
         }
