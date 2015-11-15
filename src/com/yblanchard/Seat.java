@@ -28,7 +28,7 @@ public class Seat {
     public String toString() {
         String res;
         res = (isBooked)?"reservé":"disponible";
-        return "Siege numero " + seatNum.toString() + " : " + res;
+        return "Siege numero " + seatNum.toString() + " : " + res + "\n";
     }
 
 

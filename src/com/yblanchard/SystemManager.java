@@ -109,7 +109,8 @@ public class SystemManager{
         return success;
     }
 
-    public void findAvailableFlights(String orig,String dest){
+    public boolean findAvailableFlights(String orig,String dest){
+        boolean success = false;
         Iterator iterator = airlines.keySet().iterator();
         String cle;
         List<Flight> availableFlight;
@@ -117,14 +118,33 @@ public class SystemManager{
             cle = (String)iterator.next();
             System.out.println(cle);
             availableFlight = airlines.get(cle).getAvailableFlights(airports.get(orig), airports.get(dest));
-            availableFlight.stream().forEach(System.out::println);
+            if(availableFlight.size() != 0) {
+                availableFlight.stream().forEach(System.out::println);
+                success = true;
+            }else{
+                success = false;
+            }
+            //success = (availableFlight !=null)?true:false;
         }
+        return success;
     }
 
     public boolean bookSeat(String air,String fl,SeatClass s,int row,char col){
         boolean success = false;
         if(airlines.get(air) != null) {
             success =airlines.get(air).bookFlight(fl, s, row, col);
+            //airlines.get(air).findFlight(fl).findSection(s).bookSeat(new SeatID(row,col)); //.bookSeat(s,row,col);
+        }else{
+            System.err.println("La compagnie n'existe pas.");
+            success = false;
+        }
+        return success;
+    }
+
+    public boolean bookSeat(String air,String fl,SeatClass s){
+        boolean success = false;
+        if(airlines.get(air) != null) {
+            success =airlines.get(air).bookFlight(fl, s);
             //airlines.get(air).findFlight(fl).findSection(s).bookSeat(new SeatID(row,col)); //.bookSeat(s,row,col);
         }else{
             System.err.println("La compagnie n'existe pas.");

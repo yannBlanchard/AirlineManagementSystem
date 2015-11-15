@@ -42,7 +42,8 @@ public class FlightSection {
         }
     }
 
-    public void bookSeat(){
+    public boolean bookSeat(){
+        boolean success = false;
         Iterator iterator = seats.keySet().iterator();
         String cle;
         if(hasAvailableSeats() == true){
@@ -52,13 +53,17 @@ public class FlightSection {
                 //S'il n'est pas déjà réservé alors on le réserve
                 if(seats.get(cle).getStatus().equals(false)){
                     seats.get(cle).setIsBooked(true);
+                    success = true;
+                    return success;
                 }
             }
-
+            success = false;
         }
         else{
             System.err.println("Pas de siége disponible.");
+            success = false;
         }
+        return success;
     }
 
     public boolean bookSeat(SeatID sID){
@@ -80,10 +85,11 @@ public class FlightSection {
     }
 
     public boolean hasAvailableSeats(){
-        Iterator<Seat> iterator = seats.values().iterator();
+        Iterator iterator = seats.keySet().iterator();
+        SeatID cle;
         while (iterator.hasNext()){
-            iterator.next();
-            if(seats.get(iterator).getStatus().equals(false)){
+            cle =(SeatID) iterator.next();
+            if(seats.get(cle).getStatus().equals(false)){
                 return true;
             }
         }

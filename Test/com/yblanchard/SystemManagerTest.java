@@ -339,16 +339,23 @@ public class SystemManagerTest {
      *                                Test findFlight
      *
      *----------------------------------------------------------------------------------*/
-    /*@DataProvider(name = "placeEncoreDisponible")
-    public Object[][] placeEncoreDisponible() {
-        return new Object[][]{
-                {"DELTA","123",2,10,SeatClass.BUSI,true},
-                {"DELTA","123",3,30,SeatClass.ECO,false}
-        };
-    }
-    @Test(dataProvider = "placeEncoreDisponible",groups = { "findFlight" },dependsOnGroups = { "section.*" })
-    public void placeEncoreDisponible(String p1,String p2,int i1,int i2,SeatClass s1,boolean b1) throws Exception {
 
-        assertEquals(res.createSection(p1,p2,i1,i2,s1),b1);
-    }*/
+    @Test(groups = { "findFlight" },dependsOnGroups = { "bookSeat.*" })
+    public void placeEncoreDisponible() throws Exception {
+        res.createFlight("AIRFR","DEN","CDG",2015,10,11,"684");
+        res.createSection("AIRFR", "684", 1, 2, SeatClass.BUSI);
+        res.bookSeat("AIRFR", "684", SeatClass.BUSI, 1, 'A');
+        assertEquals(res.findAvailableFlights("DEN", "CGD"),true);
+    }
+
+
+    @Test(groups = { "findFlight" },dependsOnGroups = { "bookSeat.*" })
+    public void placeNonDisponible() throws Exception {
+        res.createFlight("AIRFR","CDG","LON",2015,10,11,"642");
+        res.createSection("AIRFR", "642", 1, 2, SeatClass.ECO);
+        res.bookSeat("AIRFR", "642", SeatClass.ECO, 1, 'A');
+        assertEquals(res.findAvailableFlights("CDG", "LON"), true);
+        res.bookSeat("AIRFR", "642", SeatClass.ECO, 1, 'B');
+        assertEquals(res.findAvailableFlights("CDG", "LON"), false);
+    }
 }

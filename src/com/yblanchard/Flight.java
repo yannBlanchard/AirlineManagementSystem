@@ -16,11 +16,6 @@ public class Flight {
     private Airport origin;
 
 
-    public Flight(String flightID, Calendar flightDate) {
-        this.flightID = flightID;
-        this.flightDate = flightDate;
-    }
-
     public Flight(Calendar flightDate, String flightID, Airport destination, Airport origin) {
         this.flightDate = flightDate;
         this.flightID = flightID;
@@ -79,12 +74,44 @@ public class Flight {
         return success;
     }
 
+    public boolean bookSeat(SeatClass s){
+        Boolean success = false;
+        if(sections.get(s) != null) {
+            success = findSection(s).bookSeat();
+
+            //findSection(s).bookSeat(new SeatID(row, col));
+            //sections.get(s).bookSeat(new SeatID(row,col));
+        }
+        else{
+            System.err.println("La section n'existe pas.");
+            success = false;
+        }
+        return success;
+    }
+
     public Airport getDestination() {
         return destination;
     }
 
     public Airport getOrigin() {
         return origin;
+    }
+
+    public boolean hasSection(){
+        return (sections != null)?true:false;
+    }
+
+    public boolean hasSeat(){
+        boolean res = false;
+
+        Iterator iterator = sections.keySet().iterator();
+        SeatClass cle;
+        while (iterator.hasNext() && res == false){
+            cle = (SeatClass)iterator.next();
+            res = sections.get(cle).hasAvailableSeats();
+
+        }
+        return res;
     }
 
     public Calendar getFlightDate() {

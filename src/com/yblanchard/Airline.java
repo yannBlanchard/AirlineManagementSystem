@@ -51,11 +51,16 @@ public class Airline{
         String cle;
         List<Flight> availableFlight = new ArrayList<>();
         Iterator iterator = flights.keySet().iterator();
+        Flight flight;
         while (iterator.hasNext()){
             cle = (String)iterator.next();
+            flight = flights.get(cle);
             //Si il existe un vol avec l'origine et la destination passé en paramettre
-            if(flights.get(cle).getOrigin().equals(orig) && flights.get(cle).getDestination().equals(dest)){
-                availableFlight.add(flights.get(cle));
+            if(flight.getOrigin().equals(orig) && flight.getDestination().equals(dest)){
+                //Si le vol a des siege de disponible
+                if(flight.hasSeat() == true){
+                    availableFlight.add(flight);
+                }
             }
         }
 
@@ -73,6 +78,19 @@ public class Airline{
         }
         return success;
     }
+
+    public boolean bookFlight(String fl,SeatClass s){
+        Boolean success= false;
+        if(flights.get(fl) != null) {
+            success =flights.get(fl).bookSeat(s);
+            //success = true;
+        }else{
+            System.err.println("Le vol n'existe pas.");
+            success = false;
+        }
+        return success;
+    }
+
 
     @Override
     public String toString() {
