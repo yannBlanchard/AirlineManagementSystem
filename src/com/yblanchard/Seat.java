@@ -20,10 +20,6 @@ public class Seat {
         return isBooked;
     }
 
-    public SeatID getSeatNum() {
-        return seatNum;
-    }
-
     @Override
     public String toString() {
         String res;

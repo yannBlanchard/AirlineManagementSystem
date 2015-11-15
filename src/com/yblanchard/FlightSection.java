@@ -45,11 +45,11 @@ public class FlightSection {
     public boolean bookSeat(){
         boolean success = false;
         Iterator iterator = seats.keySet().iterator();
-        String cle;
+        SeatID cle;
         if(hasAvailableSeats() == true){
             //On recherche le premier siége de libre
             while (iterator.hasNext()){
-                cle = (String)iterator.next();
+                cle = (SeatID)iterator.next();
                 //S'il n'est pas déjà réservé alors on le réserve
                 if(seats.get(cle).getStatus().equals(false)){
                     seats.get(cle).setIsBooked(true);

@@ -114,18 +114,6 @@ public class Flight {
         return res;
     }
 
-    public Calendar getFlightDate() {
-        return flightDate;
-    }
-
-    public String getFlightID() {
-        return flightID;
-    }
-
-    public Airline getAirline() {
-        return airline;
-    }
-
     @Override
     public String toString() {
         String res;

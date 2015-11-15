@@ -40,7 +40,8 @@ public class ClientAMS {
         res.createFlight("AIRFR", "CDG","DEN",2015,11,10,"234");
         res.createFlight("AIRFR", "CDG","DEN",2015,11,10,"234");//l'id existe deja
         res.createFlight("EASY", "LON","DEN",2015,11,10,"147");
-        res.createFlight("JET", "CDG","DEN",2015,11,10,"486");
+        res.createFlight("JET", "CDG", "DEN", 2015, 11, 10, "486");
+        res.createFlight("WXC", "CDG", "DEN", 2015, 11, 10, "456");
         //create section
         res.createSection("JET","123",2,2,SeatClass.ECO);
         res.createSection("JET","123",1,3,SeatClass.ECO); // Erreur eco existe deja
@@ -48,18 +49,34 @@ public class ClientAMS {
         res.createSection("DELTA","123",2,3,SeatClass.FIRST);
         res.createSection("DELTA","123",1,2,SeatClass.BUSI);
         res.createSection("AIRFR","234",6,3,SeatClass.BUSI);
+        res.createSection("AIRFR","234",0,3,SeatClass.ECO);//erreur nombre de colonne doit être supérieur à 0
+        res.createSection("AIRFR","234",101,3,SeatClass.ECO);//erreur nombre de colonne doit être inférieur à 100
+        res.createSection("AIRFR","234",6,0,SeatClass.ECO); //erreur nombre de siege doit être supérieur à 0
         res.createSection("EASY","147",2,3,SeatClass.FIRST);
+        res.createSection("EASY","235",2,3,SeatClass.FIRST);// l'id n'existe pas
         res.createSection("UGHGFUJ","147",2,3,SeatClass.FIRST);// erreur compagnie n'existe pas
 
         res.displaySystemDetails();
 
 
-        res.findAvailableFlights("DEN","LON");
+        res.findAvailableFlights("DEN", "LON");
 
-        res.bookSeat("DELTA","123",SeatClass.BUSI,1,'A');
-        res.bookSeat("DELTA","123",SeatClass.ECO,1,'A'); //section existe pas
+        res.bookSeat("DELTA", "123", SeatClass.BUSI, 1, 'A');
+        res.bookSeat("DELTA", "123", SeatClass.ECO, 1, 'A'); //section existe pas
+        res.bookSeat("DELTA", "156", SeatClass.ECO, 1, 'A'); //vol n'existe pas
         res.bookSeat("DELTA","123",SeatClass.BUSI,1,'B');
+        res.bookSeat("DELTA","123",SeatClass.BUSI,1,'K');//id du siege non trouvé
+        res.bookSeat("WXCV","123",SeatClass.BUSI,1,'B'); // la compagnie n'existe pas
         res.bookSeat("DELTA","123",SeatClass.BUSI,1,'A'); // deja reservé
+        res.bookSeat("AIRFR","234",SeatClass.ECO,1,'A'); // section non trouvé
+
+
+
+        res.bookSeat("DELTA","123",SeatClass.FIRST);
+        res.bookSeat("JET","123",SeatClass.BUSI);//la section n'existe pas
+        res.bookSeat("JET","987",SeatClass.BUSI);//le vol n'existe pas
+        res.bookSeat("QSDF","123",SeatClass.FIRST);//erreur compagnie existe pas
+
 
         res.displaySystemDetails();
 

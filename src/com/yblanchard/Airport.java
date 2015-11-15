@@ -12,9 +12,6 @@ public class Airport {
         this.code = code;
     }
 
-    public String getName() {
-        return code;
-    }
 
     @Override
     public String toString() {

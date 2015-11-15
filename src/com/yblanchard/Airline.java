@@ -6,9 +6,6 @@ import java.util.*;
  * Created by Yann on 01/11/2015.
  */
 public class Airline{
-    public String getName() {
-        return name;
-    }
 
     private String name;
     private Map<String, Flight> flights = new HashMap<>();
