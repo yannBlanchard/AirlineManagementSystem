@@ -1,2 +1,8 @@
 # AirlineManagementSystem
-https://guendouz.wordpress.com/2012/11/23/utilisation-de-la-base-de-donnees-sqlite-en-java/
+
+
+Le PDF se situe dans le dossier Doc.
+Les test se situe dans le dossier Test.
+Toutes les classe se situe dans le dossier src.
+
+Résultat cloverage : 93.7%
